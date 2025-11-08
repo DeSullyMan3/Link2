@@ -1,6 +1,16 @@
 <RCC>
   <qresource prefix="swinxs">
+    <file>games/00000.png</file>
+    <file>games/00011.png</file>
+    <file>games/00012.png</file>
+    <file>games/00014.png</file>
+    <file>games/00045.png</file>
+    <file>games/00047.png</file>
+    <file>games/game-bg.svg</file>
     <file>swinxs.png</file>
+    <file>swinxs-gray.svg</file>
+    <file>swinxs-green.svg</file>
+    <file>swinxs-red.svg</file>
     <file>title.ico</file>
   </qresource>
 </RCC>

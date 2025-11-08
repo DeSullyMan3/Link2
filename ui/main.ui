@@ -40,6 +40,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>-1</x>
@@ -49,7 +52,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="info">
      <attribute name="title">
@@ -164,6 +167,9 @@
      </widget>
     </widget>
     <widget class="QWidget" name="games">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="font">
       <font>
        <pointsize>9</pointsize>
@@ -230,6 +236,46 @@
        <string>TextLabel</string>
       </property>
      </widget>
+     <widget class="QLabel" name="game_ico">
+      <property name="geometry">
+       <rect>
+        <x>607</x>
+        <y>218</y>
+        <width>105</width>
+        <height>105</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="main.qrc">:/swinxs/games/00000.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QLabel" name="game_bg">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>210</y>
+        <width>120</width>
+        <height>120</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="main.qrc">:/swinxs/games/game-bg.svg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>game_list</zorder>
+     <zorder>title</zorder>
+     <zorder>author</zorder>
+     <zorder>game_bg</zorder>
+     <zorder>game_ico</zorder>
     </widget>
    </widget>
   </widget>
@@ -241,7 +287,6 @@
  </widget>
  <resources>
   <include location="main.qrc"/>
-  <include location="../../.designer/backup/main.qrc"/>
  </resources>
  <connections/>
 </ui>
