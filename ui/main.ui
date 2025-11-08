@@ -49,13 +49,16 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="info">
      <attribute name="title">
       <string>Info</string>
      </attribute>
      <widget class="QLabel" name="swinxs_image">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -78,9 +81,9 @@
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>20</y>
+        <y>15</y>
         <width>431</width>
-        <height>21</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
@@ -90,7 +93,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Swinxs 2</string>
+       <string>Swinxs 02.003</string>
       </property>
       <property name="scaledContents">
        <bool>false</bool>
@@ -100,9 +103,9 @@
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>40</y>
+        <y>41</y>
         <width>431</width>
-        <height>21</height>
+        <height>20</height>
        </rect>
       </property>
       <property name="font">
@@ -111,7 +114,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Firmware 500</string>
+       <string>Firmware: 00520</string>
       </property>
       <property name="scaledContents">
        <bool>false</bool>
@@ -121,9 +124,9 @@
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>57</y>
+        <y>61</y>
         <width>431</width>
-        <height>21</height>
+        <height>20</height>
        </rect>
       </property>
       <property name="font">
@@ -132,17 +135,101 @@
        </font>
       </property>
       <property name="text">
-       <string>Taal Nederlands</string>
+       <string>Taal: NLD</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="serialnbr">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>81</y>
+        <width>431</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Serienummer: 7</string>
       </property>
       <property name="scaledContents">
        <bool>false</bool>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="games">
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Spellen</string>
      </attribute>
+     <widget class="QListWidget" name="game_list">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>-1</x>
+        <y>0</y>
+        <width>751</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLabel" name="title">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>190</y>
+        <width>711</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="author">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>210</y>
+        <width>711</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -154,6 +241,7 @@
  </widget>
  <resources>
   <include location="main.qrc"/>
+  <include location="../../.designer/backup/main.qrc"/>
  </resources>
  <connections/>
 </ui>
