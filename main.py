@@ -48,7 +48,8 @@ if properties.is_file() or propertiesslash.is_file():
     serial = config["DEFAULT"]["SERIALNBR"]
 
 # print(language, firmware, sdcard, hardware, serial)
-
+games = [f.name for f in Path(f"{swinxs_path}/{language.lower()}/games").iterdir() if f.is_dir()]
+print(games)
 app = QApplication(sys.argv)
 
 # Load the UI file
@@ -72,7 +73,6 @@ else:
     window.findChild(QLabel, "firm").setText(f"Firmware: {firmware}")
     window.findChild(QLabel, "serialnbr").setText(f"Serienummer: {serial}")
 
-window.findChild(QListWidget, "game_list").addItem("ardeaple")
 window.findChild(QListWidget, "game_list").setStyleSheet("""
     QListWidget {
         padding: 6px;           /* space inside the label */
@@ -84,8 +84,11 @@ window.findChild(QListWidget, "game_list").setStyleSheet("""
 """)
 
 def on_item_clicked(item: QListWidget):
-    window.findChild(QLabel, "title").setText(f"plankje kaak")
+    window.findChild(QLabel, "title").setText(item.text())
     print("You clicked:", item.text())
+
+for g in games:
+    window.findChild(QListWidget, "game_list").addItem(g)
 
 window.findChild(QListWidget, "game_list").itemClicked.connect(on_item_clicked)
 
