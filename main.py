@@ -1,5 +1,6 @@
 # main.py
 import sys
+import psutil
 from pathlib import Path
 from configparser import ConfigParser
 from PySide6.QtWidgets import QApplication, QLabel, QWidget, QListWidget, QListWidgetItem, QStatusBar
@@ -11,21 +12,45 @@ from PySide6.QtSvgWidgets import QSvgWidget
 # Import the compiled resources
 import ui.resources_rc
 
-# Tell user to specify Swinxs path
+def swinxs_find(filename="SYSTEM.PRP"):
+    """
+    Automagically searching for a Swinxs
+    """
+    for partition in psutil.disk_partitions(all=False):
+        mount = Path(partition.mountpoint)
+        target_file = mount / filename
+        if target_file.exists():
+            return mount
+    return None
 
-
+if __name__ == "__main__":
+    result = swinxs_find()
+    if result:
+        swinxs_path = result
+        print(f"Swinxs gevonden in: {result}")
+        auto_swinxs=True
+    else:
+        print("Swinxs niet gevonden.")
+        auto_swinxs=False
 
 if len(sys.argv) > 2:
     print("Zet het pad tussen puntjes aub!")
     sys.exit(1)
 if len(sys.argv) > 1:
     swinxs_path = sys.argv[1]
-else:
+elif not(auto_swinxs):
     swinxs_path = "/"
 
 # Read PRPs
 properties = Path(swinxs_path) / "SYSTEM.PRP"
-#link2 = f"{swinxs_path}LINK2.PRP"
+
+# maybe a special link2.prp for the future
+link2_check = Path(swinxs_path) / "LINK2.PRP"
+if link2_check.exists():
+    link2 = f"{swinxs_path}LINK2.PRP"
+    link2_exist = True
+else:
+    link2_exist = False
 
 if properties.is_file():
     with open(properties) as f:

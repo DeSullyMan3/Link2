@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>750</width>
-    <height>414</height>
+    <height>436</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>750</width>
-    <height>414</height>
+    <height>436</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>750</width>
-    <height>414</height>
+    <height>436</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -284,6 +284,28 @@
     <bool>false</bool>
    </property>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>750</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionOver"/>
+   </widget>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionOver">
+   <property name="text">
+    <string>Over</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="main.qrc"/>
