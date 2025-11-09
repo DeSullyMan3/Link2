@@ -1,6 +1,8 @@
 # main.py
 import sys
 import psutil
+from pystray import Icon, MenuItem, Menu
+from PIL import Image
 from pathlib import Path
 from configparser import ConfigParser
 from PySide6.QtWidgets import QApplication, QLabel, QWidget, QListWidget, QListWidgetItem, QStatusBar
@@ -8,9 +10,20 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import Qt, QFile, QDirIterator
 from PySide6.QtGui import QPixmap
 from PySide6.QtSvgWidgets import QSvgWidget
+import threading
+
+def start_tray():
+    Icon.run()
+
+tray_thread = threading.Thread(target=start_tray, daemon=True)
+tray_thread.start()
+
 
 # Import the compiled resources
 import ui.resources_rc
+
+icon = Icon("link2", Image.open("ui/swinxs-green.png"), "SwinxsLink 2")
+icon.menu = Menu(MenuItem('Quit', lambda icon, item: icon.stop()))
 
 def swinxs_find(filename="SYSTEM.PRP"):
     """
@@ -82,7 +95,7 @@ ui_file.open(QFile.ReadOnly)
 loader = QUiLoader()
 window = loader.load(ui_file)
 ui_file.close()
-
+app.aboutToQuit.connect(lambda: icon.stop())
 
 # Get status bar
 status = window.findChild(QStatusBar, "statusbar")
@@ -181,4 +194,13 @@ if properties.is_file():
 window.findChild(QListWidget, "game_list").itemClicked.connect(on_item_clicked)
 
 window.show()
+
+# Start tray icon in background thread
+tray_thread = threading.Thread(target=lambda: icon.run(), daemon=True)
+tray_thread.start()
+
+# Ensure tray icon stops when Qt closes
+app.aboutToQuit.connect(lambda: icon.stop())
+
+# Start Qt event loop
 sys.exit(app.exec())
